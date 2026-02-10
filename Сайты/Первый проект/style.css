@@ -1,0 +1,36 @@
+#Заголовок{
+    text-align: center;
+    color: red;
+    
+}
+.Шапка {
+     background-color: #222;
+}
+
+.Шапка li {
+    list-style: none;
+    
+}
+
+.Шапка ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+    gap: 25;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: aliceblue;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #ffcc00f5;
+}
+
+body {
+    
+}
