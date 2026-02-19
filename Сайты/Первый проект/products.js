@@ -1,73 +1,21 @@
 fetch('products.csv')
-    .then(response => response.text())
-    .then(data => {
-        const lines = data.split('\n');
-        const container = document.querySelector('.products');
+  .then(r => r.text())
+  .then(data => {
+    const lines = data.split('\n');
+    const container = document.querySelector('.products');
 
-        lines.slice(1).forEach(line => {
-            const [name, price, image] = line.split(';'); // важно: ; из Excel
+    lines.slice(1).forEach(line => {
+      const [name, price, image] = line.split(';');
+      if (!name) return;
 
-            if (!name) return;
-
-            container.innerHTML += `
-            <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NE-SKAM-SKINS</title>
-</head>
-<body>
-    
-    
-    <div class="content">
-        <header> 
-            <div class="Шапка">
-                <nav>
-                    <div class="навигация_конт">
-                        <a href="index.html" class="логотип">
-                            <img src="photo/01.svg" alt="Коба" width="50"/>
-                        </a>
-                        <ul>
-                            <li><a href="Купить скин.html" target="_self">Продать скин</a></li>
-                            <li><a href="start_playing.php" target="_self">Купить скин</a></li>
-                            <li><a href="base_char.php" target="_self">База знаний</a></li>
-                            <li><a href="statistics.php" target="_self">Статистика</a></li>
-                        </ul> 
-                    </div>
-                </nav>
-            </div>
-        </header>
-        <h1 id="Заголовок">Не Скам Скинс</h1>
-        <p>У нас вы сможете приобрести самые честные скины</p>
-    </div>
-
-    <div id="preloader">
-        <div class="spinner"></div>
-        <div class="loader-text">NE-SKAM-SKINS</div>
-    </div>
-
-    <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('preloader').style.opacity = '0';
-                setTimeout(function() {
-                    document.getElementById('preloader').style.display = 'none';
-                    document.querySelector('.content').style.display = 'block';
-                }, 500);
-            }, 1000); 
-        });
-    </script>
-     <div class="product">
-                    <img src="images/${image.trim()}" alt="${name}">
-                    <h3>${name}</h3>
-                    <strong>${price} ₽</strong>
-                </div>
-</body>
-</html>
-               
-            `;
-        });
-    })
-    .catch(error => console.error('Ошибка загрузки CSV:', error));
+      container.innerHTML += `
+        <div class="product">
+          <a href="product.html?name=${name.trim()}">
+            <img src="images/${image.trim()}">
+            <h3>${name}</h3>
+            <p>${price} ₽</p>
+          </a>
+        </div>
+      `;
+    });
+  });

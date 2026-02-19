@@ -5,16 +5,20 @@ fetch('products.csv')
         const container = document.querySelector('.products');
 
         lines.slice(1).forEach(line => {
-            const [name, price, image] = line.split(';'); // важно: ; из Excel
+            const [name, price, image] = line.split(';');
 
             if (!name) return;
 
             container.innerHTML += `
-                <div class="product">
+            
+     <div class="product">
                     <img src="images/${image.trim()}" alt="${name}">
                     <h3>${name}</h3>
                     <strong>${price} ₽</strong>
                 </div>
+</body>
+</html>
+               
             `;
         });
     })

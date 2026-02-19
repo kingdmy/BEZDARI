@@ -113,3 +113,37 @@ p {
 
 
 
+.products {
+            display: grid;
+            grid-template-columns: repeat(3, 200px);
+            gap: 20px;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ffcc00;
+    color: #222;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #e6b800;
+}
+
+.main {
+    align-items: center;
+}
